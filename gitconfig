@@ -1,0 +1,16 @@
+[user]
+	name = Hiromitsu FUJITA
+	email = bow.fujita@gmail.com
+[core]
+	editor = vim
+[color]
+	ui = auto
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	di = diff
+	br = branch
+	mg = merge
+[github]
+	user = bow-fujita
