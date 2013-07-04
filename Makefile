@@ -9,7 +9,7 @@ GITCONFIG := gitconfig
 INSTALL_TARGETS += $(GITCONFIG)
 
 $(HOME)/.$(GITCONFIG): $(GITCONFIG)
-	cp -i $? $@
+	cp -i $? $@ || true
 
 
 VIM := vim
