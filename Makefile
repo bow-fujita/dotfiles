@@ -4,6 +4,22 @@ SHELL := /bin/bash
 .PHONY: all
 all:
 
+SYMLINK := ln -si
+
+BASHRC := bashrc
+BASHRC_D := bashrc.d
+BASH_PROFILE := bash_profile
+INSTALL_TARGETS += $(BASHRC) $(BASHRC_D) $(BASH_PROFILE)
+
+$(HOME)/.$(BASHRC): $(BASHRC)
+	cd $(@D); $(SYMLINK) $(realpath $(BASHRC)) $(@F)
+
+$(HOME)/.$(BASHRC_D): | $(BASHRC_D)
+	cd $(@D); $(SYMLINK) $(realpath $(BASHRC_D)) $(@F)
+
+$(HOME)/.$(BASH_PROFILE): $(BASH_PROFILE)
+	cd $(@D); $(SYMLINK) $(realpath $(BASH_PROFILE)) $(@F)
+
 
 GITCONFIG := gitconfig
 INSTALL_TARGETS += $(GITCONFIG)
@@ -45,13 +61,13 @@ load-vim-bundle: $(VIM_PLUGIN_DIR)
 endif # $(MAKECMDGOALS) == load-vim-bundle
 
 $(HOME)/.$(VIM): | build-vim-bundle
-	cd $(@D); ln -s $(realpath $(VIM)) $(@F)
+	cd $(@D); $(SYMLINK) $(realpath $(VIM)) $(@F)
 
-$(HOME)/.$(VIMRC): | $(VIMRC)
-	cd $(@D); ln -s $(realpath $(VIMRC)) $(@F)
+$(HOME)/.$(VIMRC): $(VIMRC)
+	cd $(@D); $(SYMLINK) $(realpath $(VIMRC)) $(@F)
 
 $(HOME)/.$(VIMRC_D): | $(VIMRC_D)
-	cd $(@D); ln -s $(realpath $(VIMRC_D)) $(@F)
+	cd $(@D); $(SYMLINK) $(realpath $(VIMRC_D)) $(@F)
 
 
 .PHONY: install
