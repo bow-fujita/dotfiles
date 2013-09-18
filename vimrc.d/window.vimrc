@@ -37,6 +37,9 @@ set ruler
 " スクロール時のラップ行数
 set scrolloff=5
 
+" 対応する括弧のハイライト表示を抑止
+let loaded_matchparen=1
+
 " 前回終了したカーソル位置を記憶
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
