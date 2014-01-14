@@ -6,19 +6,15 @@ all:
 
 SYMLINK := ln -si
 
-BASHRC := bashrc
 BASHRC_D := bashrc.d
 BASH_PROFILE := bash_profile
-INSTALL_TARGETS += $(BASHRC) $(BASHRC_D) $(BASH_PROFILE)
+INSTALL_TARGETS += $(BASHRC_D) $(BASH_PROFILE)
 
-$(HOME)/.$(BASHRC): $(BASHRC)
-	cd $(@D); $(SYMLINK) $(realpath $(BASHRC)) $(@F)
-
-$(HOME)/.$(BASHRC_D): | $(BASHRC_D)
-	cd $(@D); $(SYMLINK) $(realpath $(BASHRC_D)) $(@F)
+$(HOME)/.$(BASHRC_D): $(BASHRC_D)
+	cd $(@D); $(SYMLINK) $(realpath $(BASHRC_D)) $(@F) || true
 
 $(HOME)/.$(BASH_PROFILE): $(BASH_PROFILE)
-	cd $(@D); $(SYMLINK) $(realpath $(BASH_PROFILE)) $(@F)
+	cd $(@D); $(SYMLINK) $(realpath $(BASH_PROFILE)) $(@F) || true
 
 
 GITCONFIG := gitconfig
