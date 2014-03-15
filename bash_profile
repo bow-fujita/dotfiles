@@ -21,6 +21,9 @@ export PAGER=less
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Set propmt
+PS1="[\u@\h \W]\\$"
+
 # Load custom scripts.
 if [ -d ~/.bashrc.d ]; then
 	for rc in ~/.bashrc.d/*.sh; do
