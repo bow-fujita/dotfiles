@@ -22,7 +22,7 @@ export PAGER=less
 shopt -s checkwinsize
 
 # Set propmt
-PS1="[\u@\h \W]\\$"
+PS1='[\u@\h \W]\$ '
 
 # Load custom scripts.
 if [ -d ~/.bashrc.d ]; then

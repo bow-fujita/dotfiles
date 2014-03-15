@@ -8,13 +8,17 @@ SYMLINK := ln -si
 
 BASHRC_D := bashrc.d
 BASH_PROFILE := bash_profile
-INSTALL_TARGETS += $(BASHRC_D) $(BASH_PROFILE)
+BASH_ALIASES := bash_aliases
+INSTALL_TARGETS += $(BASHRC_D) $(BASH_PROFILE) $(BASH_ALIASES)
 
 $(HOME)/.$(BASHRC_D): $(BASHRC_D)
 	cd $(@D); $(SYMLINK) $(realpath $(BASHRC_D)) $(@F) || true
 
 $(HOME)/.$(BASH_PROFILE): $(BASH_PROFILE)
 	cd $(@D); $(SYMLINK) $(realpath $(BASH_PROFILE)) $(@F) || true
+
+$(HOME)/.$(BASH_ALIASES): $(BASH_ALIASES)
+	cd $(@D); $(SYMLINK) $(realpath $(BASH_ALIASES)) $(@F) || true
 
 
 GITCONFIG := gitconfig
