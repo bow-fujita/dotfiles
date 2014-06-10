@@ -14,5 +14,3 @@
 	mg = merge
 [github]
 	user = bow-fujita
-[push]
-	default = simple
