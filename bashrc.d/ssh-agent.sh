@@ -10,7 +10,7 @@ load_ssh_keys()
 {
 	local loaded_keys=$(ssh-add -l | awk '{print $3}') loaded_key private_keys private_key found
 
-	for private_key in $(ls ~/.ssh/id_* | grep -v '\.pub$'); do
+	for private_key in $(ls ~/.ssh/id_* 2>/dev/null | grep -v '\.pub$'); do
 		if [ -f $private_key ]; then
 			found=0
 			for loaded_key in $loaded_keys; do
