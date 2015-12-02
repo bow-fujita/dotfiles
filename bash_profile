@@ -10,6 +10,7 @@ if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
+# Extend PATH.
 for path in /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $HOME/bin; do
 	if ! echo $PATH | sed 's/:/\n/g' | egrep -q ^$path/?$; then
 		PATH=$PATH:$path
@@ -33,8 +34,8 @@ PS1='[\u@\h \W]\$ '
 
 # Load custom scripts.
 if [ -d ~/.bashrc.d ]; then
-	for rc in ~/.bashrc.d/*.sh; do
-		. $rc
+	for script in $(ls ~/.bashrc.d/*.sh 2> /dev/null); do
+		. $script
 	done
-	unset rc
+	unset script
 fi

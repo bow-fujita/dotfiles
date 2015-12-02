@@ -5,23 +5,19 @@ if which dircolors >& /dev/null; then
     [ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-case "$(uname)" in
-	Linux)
-	alias ls='ls --color=auto'
-	;;
-
-	Darwin|FreeBSD)
-	alias ls='ls -G'
-	;;
-esac
-
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-VI=$(which vi 2> /dev/null)
-VIM=$(which vim 2> /dev/null)
-if [ -n "$VIM" ]; then
-	[ "$(realpath $VIM)" = "$(realpath $VI)" ] || alias vi=vim
+if [ -d ~/.bash_aliases.d ]; then
+	# Load platform dependent script.
+	if [ -d ~/.bash_aliases.d/$(uname) ]; then
+		. ~/.bash_aliases.d/$(uname)
+	fi
+
+	# Load custom scripts.
+	for script in $(ls ~/.bash_aliases.d/*.sh 2>/dev/null); do
+		. $script
+	done
+	unset script
 fi
-unset VI VIM

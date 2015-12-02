@@ -2,23 +2,27 @@ SHELL := /bin/bash
 .SUFFIXES:
 
 .PHONY: all
-all:
+all: install
 
-SYMLINK := ln -si
+SYMLINK = cd $(HOME); ln -si $(notdir $(CURDIR))/$(1) .$(notdir $(1)) || true
 
 BASHRC_D := bashrc.d
 BASH_PROFILE := bash_profile
 BASH_ALIASES := bash_aliases
-INSTALL_TARGETS += $(BASHRC_D) $(BASH_PROFILE) $(BASH_ALIASES)
+BASH_ALIASES_D := bash_aliases.d
+INSTALL_TARGETS += $(BASHRC_D) $(BASH_PROFILE) $(BASH_ALIASES) $(BASH_ALIASES_D)
 
 $(HOME)/.$(BASHRC_D): $(BASHRC_D)
-	cd $(@D); $(SYMLINK) $(realpath $(BASHRC_D)) $(@F) || true
+	$(call SYMLINK,$?)
 
 $(HOME)/.$(BASH_PROFILE): $(BASH_PROFILE)
-	cd $(@D); $(SYMLINK) $(realpath $(BASH_PROFILE)) $(@F) || true
+	$(call SYMLINK,$?)
 
 $(HOME)/.$(BASH_ALIASES): $(BASH_ALIASES)
-	cd $(@D); $(SYMLINK) $(realpath $(BASH_ALIASES)) $(@F) || true
+	$(call SYMLINK,$?)
+
+$(HOME)/.$(BASH_ALIASES_D): $(BASH_ALIASES_D)
+	$(call SYMLINK,$?)
 
 
 GITCONFIG := gitconfig
@@ -37,7 +41,7 @@ VIM_BUNDLE_DIR := $(VIM)/bundle
 
 .PHONY: build-vim-bundle
 build-vim-bundle: | $(VIM_BUNDLE_DIR)
-	@for repo in $(shell cat $(VIM_BUNDLE_DIR)/github-repos); do \
+	@for repo in $(shell cat $(VIM_BUNDLE_DIR)/github-repos 2> /dev/null); do \
 		$(MAKE) GITHUB_REPO=$$repo load-vim-bundle; \
 	done
 
@@ -51,7 +55,7 @@ VIM_PLUGIN_DIR := $(VIM_BUNDLE_DIR)/$(shell basename $(GITHUB_REPO))
 
 $(VIM_PLUGIN_DIR):
 ifeq ($(wildcard $(VIM_PLUGIN_DIR)),)
-	git clone http://github.com/$(GITHUB_REPO) $@
+	git clone https://github.com/$(GITHUB_REPO) $@
 else
 	cd $@; git pull
 endif
@@ -60,14 +64,14 @@ load-vim-bundle: $(VIM_PLUGIN_DIR)
 
 endif # $(MAKECMDGOALS) == load-vim-bundle
 
-$(HOME)/.$(VIM): | build-vim-bundle
-	cd $(@D); $(SYMLINK) $(realpath $(VIM)) $(@F)
+$(HOME)/.$(VIM): $(VIM) | build-vim-bundle
+	$(call SYMLINK,$?)
 
 $(HOME)/.$(VIMRC): $(VIMRC)
-	cd $(@D); $(SYMLINK) $(realpath $(VIMRC)) $(@F)
+	$(call SYMLINK,$?)
 
 $(HOME)/.$(VIMRC_D): | $(VIMRC_D)
-	cd $(@D); $(SYMLINK) $(realpath $(VIMRC_D)) $(@F)
+	$(call SYMLINK,$?)
 
 
 .PHONY: install
