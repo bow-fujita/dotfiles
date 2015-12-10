@@ -45,6 +45,12 @@ build-vim-bundle: | $(VIM_BUNDLE_DIR)
 		$(MAKE) GITHUB_REPO=$$repo load-vim-bundle; \
 	done
 
+ifeq ($(GITHUB_HTTPS),yes)
+GITHUB_BASE_URL := https://github.com/
+else
+GITHUB_BASE_URL := git@github.com:
+endif
+
 .PHONY: load-vim-bundle
 ifeq ($(MAKECMDGOALS),load-vim-bundle)
 
@@ -55,7 +61,7 @@ VIM_PLUGIN_DIR := $(VIM_BUNDLE_DIR)/$(shell basename $(GITHUB_REPO))
 
 $(VIM_PLUGIN_DIR):
 ifeq ($(wildcard $(VIM_PLUGIN_DIR)),)
-	git clone https://github.com/$(GITHUB_REPO) $@
+	git clone $(GITHUB_BASE_URL)$(GITHUB_REPO) $@
 else
 	cd $@; git pull
 endif
@@ -70,7 +76,7 @@ $(HOME)/.$(VIM): $(VIM) | build-vim-bundle
 $(HOME)/.$(VIMRC): $(VIMRC)
 	$(call SYMLINK,$?)
 
-$(HOME)/.$(VIMRC_D): | $(VIMRC_D)
+$(HOME)/.$(VIMRC_D): $(VIMRC_D)
 	$(call SYMLINK,$?)
 
 
