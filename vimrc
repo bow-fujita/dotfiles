@@ -4,6 +4,9 @@ set nocompatible
 " キーマップリーダーを,に
 let mapleader=","
 
+" シンタックス関連
+source ~/.vimrc.d/syntax.vimrc
+
 " 表示関連
 source ~/.vimrc.d/window.vimrc
 
