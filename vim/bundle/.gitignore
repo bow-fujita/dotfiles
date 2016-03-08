@@ -1,1 +1,3 @@
-neocomplcache
+*/
+!github-repos
+!pathogen.vim

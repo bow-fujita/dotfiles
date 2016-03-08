@@ -1,1 +1,10 @@
 Shougo/neocomplcache
+Shougo/neosnippet.vim
+Shougo/neosnippet-snippets
+itchyny/lightline.vim
+nathanaelkane/vim-indent-guides
+bronson/vim-trailing-whitespace
+othree/html5.vim
+hail2u/vim-css3-syntax
+jelera/vim-javascript-syntax
+vim-scripts/AnsiEsc.vim
