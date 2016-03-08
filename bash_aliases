@@ -5,9 +5,18 @@ if which dircolors >& /dev/null; then
     [ -r ~/.dircolors ] && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
-alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.svn'
-alias fgrep='fgrep --color=auto --exclude-dir=.git --exclude-dir=.svn'
-alias egrep='egrep --color=auto --exclude-dir=.git --exclude-dir=.svn'
+grep_options='--color=auto --exclude-dir=.git --exclude-dir=.svn'
+for grep_command in grep fgrep egrep; do
+    if which $grep_command >& /dev/null; then
+        alias $grep_command="$grep_command $grep_options"
+    fi
+done
+unset grep_options
+unset grep_command
+
+if which less >& /dev/null; then
+    alias less='less -qR'
+fi
 
 if [ -d ~/.bash_aliases.d ]; then
 	# Load platform dependent script.
