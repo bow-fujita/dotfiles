@@ -50,6 +50,9 @@ augroup END
 hi clear CursorLine
 hi CursorLine ctermbg=253 guibg=253
 
+" F8でTabbarの表示切り替え
+nmap <F8> :TagbarToggle<CR>
+
 " QuickFixウィンドウの高さを調整
 " http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
 autocmd FileType qf call AdjustWindowHeight(10, 15)

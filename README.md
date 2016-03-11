@@ -4,5 +4,5 @@ $HOME/.* files for myself.
 
 ## Installing
 
-	$ make install
+	$ make
 
