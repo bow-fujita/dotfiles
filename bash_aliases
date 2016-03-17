@@ -18,6 +18,11 @@ if which less >& /dev/null; then
     alias less='less -qR'
 fi
 
+mkcd() {
+    mkdir -p $1
+    cd $1
+}
+
 if [ -d ~/.bash_aliases.d ]; then
 	# Load platform dependent script.
 	if [ -d ~/.bash_aliases.d/$(uname) ]; then
