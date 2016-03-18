@@ -1,0 +1,1 @@
+../bundle/ifdef-highlighting/syntax/ifdef.vim
