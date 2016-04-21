@@ -26,7 +26,7 @@ set wildmenu
 set wildmode=list:longest
 
 " ファイル名補完で無視するパターン
-set wildignore=*.o,*.ko,*.lo,*.gcda,*.gcno
+set wildignore=*.d,*.o,*.ko,*.lo,*.gcda,*.gcno
 
 " ルーラーを表示
 set ruler
@@ -39,6 +39,12 @@ let loaded_matchparen=1
 
 " 前回終了したカーソル位置を記憶
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
+
+" 分割したウィンドウ間の移動
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
 
 " フォーカスのあるウィンドウのみカーソル行をハイライト
 set cursorline

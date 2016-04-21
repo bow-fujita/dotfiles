@@ -10,3 +10,11 @@ set autoread
 " *.swpファイル不要
 set noswapfile
 
+" 保存時に行末の空白を除去
+function! TrimTrailingSpaces()
+    let cursor = getpos(".")
+    %s/\s\+$//ge
+    call setpos(".", cursor)
+    unlet cursor
+endfunction
+autocmd BufWritePre * call TrimTrailingSpaces()
