@@ -54,7 +54,7 @@ augroup cch
 	autocmd WinEnter,BufRead * set cursorline
 augroup END
 hi clear CursorLine
-hi CursorLine ctermbg=253 guibg=253
+hi CursorLine ctermbg=253
 
 " F8でTabbarの表示切り替え
 nmap <F8> :TagbarToggle<CR>

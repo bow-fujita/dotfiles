@@ -16,11 +16,11 @@ let g:neocomplcache_max_list=20
 " ハイフン入力による候補番号の表示
 let g:neocomplcache_enable_quick_match=1
 
-" ポップアップ保管の配色
-hi Pmenu ctermbg=250 guibg=250
-hi PmenuSel ctermbg=150 guibg=150
-hi PmenuSbar ctermbg=150 guibg=150
-hi PmenuThumb ctermbg=0 guibg=0
+" ポップアップ補完の配色
+hi Pmenu ctermbg=250
+hi PmenuSel ctermbg=150
+hi PmenuSbar ctermbg=150
+hi PmenuThumb ctermbg=0
 
 " Tab補完
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

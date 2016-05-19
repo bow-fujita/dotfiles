@@ -14,7 +14,7 @@ set smartcase
 set hlsearch
 
 " 検索文字の背景色
-hi Search ctermbg=250 guibg=250
+hi Search ctermbg=250
 
 " Esc連打でハイライト消去
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
