@@ -6,6 +6,9 @@ if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
 	. ~/.ssh-agent > /dev/null
 fi
 
+# Kill all other ssh-agent than current one
+ps -u $USER | grep -w ssh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID | xargs kill
+
 load_ssh_keys()
 {
 	local loaded_keys=$(ssh-add -l | awk '{print $3}') loaded_key private_keys private_key found
