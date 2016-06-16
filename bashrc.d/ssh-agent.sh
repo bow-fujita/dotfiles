@@ -7,7 +7,11 @@ if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
 fi
 
 # Kill all other ssh-agent than current one
-ps -u $USER | grep -w ssh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID | xargs kill
+zombie_ssh_agents="$(ps -u $USER | grep -w ssh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID)"
+if [ -n "$zombie_ssh_agents" ]; then
+	xargs kill $zombie_ssh_agents
+fi
+unset -f zombie_ssh_agents
 
 load_ssh_keys()
 {
