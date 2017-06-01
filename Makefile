@@ -32,6 +32,13 @@ $(HOME)/.$(GITCONFIG): $(GITCONFIG)
 	cp -i $? $@ || true
 
 
+TMUX_CONF := tmux.conf
+INSTALL_TARGETS += $(TMUX_CONF)
+
+$(HOME)/.$(TMUX_CONF): $(TMUX_CONF)
+	$(call SYMLINK,$?)
+
+
 VIM := vim
 VIMRC := vimrc
 VIMRC_D := vimrc.d
