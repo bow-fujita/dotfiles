@@ -11,10 +11,12 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # Extend PATH.
-for path in /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin $HOME/bin; do
-	if ! echo $PATH | sed 's/:/\n/g' | egrep -q ^$path/?$; then
-		PATH=$PATH:$path
-	fi
+for path in $HOME/bin /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin; do
+    if [ -d $path ]; then
+        if ! echo $PATH | sed 's/:/\n/g' | egrep -q ^$path/?$; then
+            PATH=$path:$PATH
+        fi
+    fi
 done
 unset path
 export PATH
