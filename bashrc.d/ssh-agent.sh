@@ -1,10 +1,13 @@
-if [ -f ~/.ssh-agent ]; then
-	. ~/.ssh-agent > /dev/null
+# Create a dotfile contains $SSH_AGENT_PID
+dot_ssh_agent=~/.ssh-agent.$HOSTNAME
+if [ -f $dot_ssh_agent ]; then
+	. $dot_ssh_agent > /dev/null
 fi
 if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
-	ssh-agent > ~/.ssh-agent
-	. ~/.ssh-agent > /dev/null
+	ssh-agent > $dot_ssh_agent
+	. $dot_ssh_agent > /dev/null
 fi
+unset -f dot_ssh_agent
 
 # Kill all other ssh-agent than current one
 zombie_ssh_agents="$(ps -u $USER | grep -w ssh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID)"
