@@ -44,40 +44,7 @@ VIMRC := vimrc
 VIMRC_D := vimrc.d
 INSTALL_TARGETS += $(VIM) $(VIMRC) $(VIMRC_D)
 
-VIM_BUNDLE_DIR := $(VIM)/bundle
-
-.PHONY: build-vim-bundle
-build-vim-bundle: | $(VIM_BUNDLE_DIR)
-	@for repo in $(shell cat $(VIM_BUNDLE_DIR)/github-repos 2> /dev/null); do \
-		$(MAKE) GITHUB_REPO=$$repo load-vim-bundle; \
-	done
-
-ifeq ($(GITHUB_HTTPS),yes)
-GITHUB_BASE_URL := https://github.com/
-else
-GITHUB_BASE_URL := git@github.com:
-endif
-
-.PHONY: load-vim-bundle
-ifeq ($(MAKECMDGOALS),load-vim-bundle)
-
-ifeq ($(GITHUB_REPO),)
-$(error GITHUB_REPO is not defined)
-endif
-VIM_PLUGIN_DIR := $(VIM_BUNDLE_DIR)/$(shell basename $(GITHUB_REPO))
-
-$(VIM_PLUGIN_DIR):
-ifeq ($(wildcard $(VIM_PLUGIN_DIR)),)
-	git clone $(GITHUB_BASE_URL)$(GITHUB_REPO) $@
-else
-	cd $@; git pull
-endif
-
-load-vim-bundle: $(VIM_PLUGIN_DIR)
-
-endif # $(MAKECMDGOALS) == load-vim-bundle
-
-$(HOME)/.$(VIM): $(VIM) | build-vim-bundle
+$(HOME)/.$(VIM): $(VIM)
 	$(call SYMLINK,$?)
 
 $(HOME)/.$(VIMRC): $(VIMRC)

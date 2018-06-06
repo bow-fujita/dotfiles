@@ -1,1 +1,1 @@
-../bundle/ifdef-highlighting/syntax/ifdef.vim
+../dein/repos/github.com/vim-scripts/ifdef-highlighting/syntax/ifdef.vim
