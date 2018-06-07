@@ -11,9 +11,7 @@ unset -f dot_ssh_agent
 
 # Kill all other ssh-agent than current one
 zombie_ssh_agents="$(ps -u $USER | grep -w ssh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID)"
-if [ -n "$zombie_ssh_agents" ]; then
-	xargs kill $zombie_ssh_agents
-fi
+[ -n "$zombie_ssh_agents" ] && kill $zombie_ssh_agents
 unset -f zombie_ssh_agents
 
 load_ssh_keys()
