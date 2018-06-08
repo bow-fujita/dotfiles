@@ -14,3 +14,4 @@ autocmd FileType
     \ css,javascript,php,html,xml
     \ setlocal sw=2 sts=2 ts=2
 
+autocmd FileType make setlocal noexpandtab
