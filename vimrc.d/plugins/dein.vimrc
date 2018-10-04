@@ -10,6 +10,10 @@ if &runtimepath !~# '/dein.vim'
   " dein.vimがなければダウンロード
   if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+    " Vim 8.0以下の場合はdein.vim 1.5に切り替え
+    if v:version < 800
+      execute '!git -C ' s:dein_repo_dir 'checkout -b vim7-compat 1.5'
+    endif
   endif
   " dein.vim本体をruntimepathに追加
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
