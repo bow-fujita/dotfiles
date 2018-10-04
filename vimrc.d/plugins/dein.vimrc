@@ -32,9 +32,12 @@ if dein#load_state(s:dein_dir)
   call dein#add('briancollins/vim-jst')
   call dein#add('majutsushi/tagbar')
   call dein#add('markwu/largefile')
-  call dein#add('brookhong/cscope.vim')
   call dein#add('vim-scripts/ifdef-highlighting')
   call dein#add('vim-scripts/AnsiEsc.vim')
+
+  if executable('cscope')
+    call dein#add('brookhong/cscope.vim')
+  endif
 
   call dein#end()
   call dein#save_state()
