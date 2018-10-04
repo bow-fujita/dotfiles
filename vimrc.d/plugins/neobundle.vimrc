@@ -23,8 +23,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " プラグインの登録
 NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bronson/vim-trailing-whitespace'
