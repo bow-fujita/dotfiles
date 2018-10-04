@@ -24,7 +24,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   call dein#add('Shougo/dein.vim')
-  call dein#add('Shougo/neocomplcache.vim')
+  call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('itchyny/lightline.vim')
