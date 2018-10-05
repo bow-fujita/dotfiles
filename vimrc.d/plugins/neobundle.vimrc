@@ -23,6 +23,15 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " プラグインの登録
 NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake'
+\    }
+\ }
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bronson/vim-trailing-whitespace'
@@ -34,6 +43,7 @@ NeoBundle 'majutsushi/tagbar'
 NeoBundle 'markwu/largefile'
 NeoBundle 'vim-scripts/ifdef-highlighting'
 NeoBundle 'vim-scripts/AnsiEsc.vim'
+NeoBundle 'vim-jp/vim-cpp'
 
 if executable('cscope')
   NeoBundle 'brookhong/cscope.vim'
