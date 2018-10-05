@@ -46,7 +46,7 @@ NeoBundle 'vim-scripts/AnsiEsc.vim'
 NeoBundle 'vim-jp/vim-cpp'
 
 if executable('cscope')
-  NeoBundle 'brookhong/cscope.vim'
+  NeoBundle 'vim-scripts/cscope.vim'
 endif
 
 call neobundle#end()

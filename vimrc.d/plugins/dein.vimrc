@@ -42,7 +42,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-jp/vim-cpp')
 
   if executable('cscope')
-    call dein#add('brookhong/cscope.vim')
+    call dein#add('vim-scripts/cscope.vim')
   endif
 
   call dein#end()
