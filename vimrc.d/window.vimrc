@@ -78,3 +78,12 @@ endfunction
 
 " make実行後に自動的にQuickFixウィンドウを開く
 autocmd QuickFixCmdPost make cwindow
+
+" ポップアップ補完の配色
+hi Pmenu ctermbg=250
+hi PmenuSel ctermbg=150
+hi PmenuSbar ctermbg=150
+hi PmenuThumb ctermbg=0
+
+" Tab補完
+inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
