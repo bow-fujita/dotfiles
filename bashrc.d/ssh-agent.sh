@@ -10,7 +10,7 @@ fi
 unset -f dot_ssh_agent
 
 # Kill all other ssh-agent than current one
-zombie_ssh_agents="$(ps -u $USER | grep -w ssh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID)"
+zombie_ssh_agents="$(ps -u $USER -o pid,comm | grep -w [s]sh-agent | awk '{print $1}' | grep -vw $SSH_AGENT_PID)"
 [ -n "$zombie_ssh_agents" ] && kill $zombie_ssh_agents
 unset -f zombie_ssh_agents
 
