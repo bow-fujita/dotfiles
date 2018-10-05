@@ -25,7 +25,7 @@ mkcd() {
 
 if [ -d ~/.bash_aliases.d ]; then
 	# Load platform dependent script.
-	if [ -d ~/.bash_aliases.d/$(uname) ]; then
+	if [ -f ~/.bash_aliases.d/$(uname) ]; then
 		. ~/.bash_aliases.d/$(uname)
 	fi
 
