@@ -13,7 +13,7 @@ fi
 # Extend PATH.
 for path in $HOME/bin /usr/local/bin /usr/local/sbin /usr/bin /usr/sbin /bin /sbin; do
     if [ -d $path ]; then
-        if ! echo $PATH | sed 's/:/\n/g' | egrep -q ^$path/?$; then
+        if ! echo $PATH | tr ':' '\n' | egrep -q ^$path/?$; then
             PATH=$path:$PATH
         fi
     fi
