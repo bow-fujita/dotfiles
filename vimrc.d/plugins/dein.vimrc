@@ -31,16 +31,21 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/lightline.vim')
   call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('bronson/vim-trailing-whitespace')
+  call dein#add('markwu/largefile')
+  call dein#add('tmux-plugins/vim-tmux-focus-events')
+
+  " シンタックスハイライト
   call dein#add('othree/html5.vim')
   call dein#add('hail2u/vim-css3-syntax')
   call dein#add('jelera/vim-javascript-syntax')
   call dein#add('briancollins/vim-jst')
-  call dein#add('majutsushi/tagbar')
-  call dein#add('markwu/largefile')
+  call dein#add('vim-jp/vim-cpp')
   call dein#add('vim-scripts/ifdef-highlighting')
   call dein#add('vim-scripts/AnsiEsc.vim')
-  call dein#add('vim-jp/vim-cpp')
 
+  if executable('ctag')
+    call dein#add('vim-scripts/taglist.vim')
+  endif
   if executable('cscope')
     call dein#add('vim-scripts/cscope.vim')
   endif

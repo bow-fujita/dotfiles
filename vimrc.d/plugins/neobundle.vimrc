@@ -35,16 +35,21 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bronson/vim-trailing-whitespace'
+NeoBundle 'markwu/largefile'
+NeoBundle 'tmux-plugins/vim-tmux-focus-events'
+
+" シンタックスハイライト
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'briancollins/vim-jst'
-NeoBundle 'majutsushi/tagbar', 'v2.6.1'
-NeoBundle 'markwu/largefile'
+NeoBundle 'vim-jp/vim-cpp'
 NeoBundle 'vim-scripts/ifdef-highlighting'
 NeoBundle 'vim-scripts/AnsiEsc.vim'
-NeoBundle 'vim-jp/vim-cpp'
 
+if executable('ctags')
+  NeoBundle 'vim-scripts/taglist.vim'
+endif
 if executable('cscope')
   NeoBundle 'vim-scripts/cscope.vim'
 endif
