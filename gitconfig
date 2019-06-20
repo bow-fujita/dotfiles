@@ -16,3 +16,5 @@
 	user = bow-fujita
 [push]
 	default = simple
+[fetch]
+	prune = true
