@@ -1,29 +1,32 @@
-" dein.vimによるプラグイン管理
+" Use dein.vim for Vim package manager.
 
-" プラグインのインストール先
+" Where to install plugins managed by dein.vim.
 let s:dein_dir = expand('~/.vim/dein')
 
-" dein.vim本体のインストール先
+" Where to install dein.vim itself.
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
 if &runtimepath !~# '/dein.vim'
-  " dein.vimがなければダウンロード
+  " Download dein.vim if it doesn't exist.
   if !isdirectory(s:dein_repo_dir)
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-    " Vim 8.0以下の場合はdein.vim 1.5に切り替え
+    " Use v1.5 for Vim <= 8.0.
     if v:version < 800
       execute '!git -C ' s:dein_repo_dir 'checkout -b vim7-compat 1.5'
     endif
   endif
-  " dein.vim本体をruntimepathに追加
+  " Add dein.vim to runtimepath.
   execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
 endif
 
-" dein.vimの設定
+" Configuration for dein.vim.
 if dein#load_state(s:dein_dir)
+  " Register plugins.
   call dein#begin(s:dein_dir)
 
+  " Manage dein.vim itself.
   call dein#add('Shougo/dein.vim')
+
   call dein#add('Shougo/neocomplete.vim')
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
@@ -34,7 +37,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('markwu/largefile')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
 
-  " シンタックスハイライト
+  " Syntax highlight.
   call dein#add('othree/html5.vim')
   call dein#add('hail2u/vim-css3-syntax')
   call dein#add('jelera/vim-javascript-syntax')
@@ -54,7 +57,7 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-" 未インストールのプラグインをインストール
+" Install all plugins not installed yet.
 if dein#check_install()
   call dein#install()
 endif

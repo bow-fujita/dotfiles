@@ -1,52 +1,52 @@
-" ターミナル256色対応
+" Enable 256-colors.
 set t_Co=256
 
-" カラースキーム設定
+" Use the default color scheme.
 colorscheme default
 
-" 自動折り返し禁止
+" Disable auto wrap.
 set textwidth=0
 
-" 行番号表示
+" Show line number.
 set number
 
-" コマンドを表示
+" Show command.
 set showcmd
 
-" モードを表示
+" Show mode.
 set showmode
 
-" 常にステータスラインを表示
+" Show the status line always.
 set laststatus=2
 
-" コマンドラインの補完表示
+" Show command line completion.
 set wildmenu
 
-" ステータスラインでのファイル名補完
+" Enable filename completion in the status line.
 set wildmode=list:longest
 
-" ファイル名補完で無視するパターン
+" Patterns to be ignored in filename completion.
 set wildignore=*.d,*.o,*.ko,*.lo,*.gcda,*.gcno
 
-" ルーラーを表示
+" Show ruler.
 set ruler
 
-" スクロール時のラップ行数
+" Offset lines during scroll.
 set scrolloff=5
 
-" 対応する括弧のハイライト表示を抑止
+" Disable highlighting matched parentheses.
 let loaded_matchparen=1
 
-" 前回終了したカーソル位置を記憶
+" Save cursor position.
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
-" 分割したウィンドウ間の移動
+" Shortcut keys to move around split windows.
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
-" フォーカスのあるウィンドウのみカーソル行をハイライト
+" Highlight the cursor line only in active window.
 set cursorline
 augroup cch
 	autocmd! cch
@@ -56,10 +56,10 @@ augroup END
 hi clear CursorLine
 hi CursorLine ctermbg=253
 
-" F8でTabbarの表示切り替え
-nmap <F8> :TagbarToggle<CR>
+" Toggle TagList by <F8>.
+nnoremap <silent> <F8> :TlistToggle<CR>
 
-" QuickFixウィンドウの高さを調整
+" Adjust QuickFix window hight.
 " http://vim.wikia.com/wiki/Automatically_fitting_a_quickfix_window_height
 autocmd FileType qf call AdjustWindowHeight(10, 15)
 function! AdjustWindowHeight(minheight, maxheight)
@@ -76,14 +76,14 @@ function! AdjustWindowHeight(minheight, maxheight)
     exe max([min([n_lines, a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
-" make実行後に自動的にQuickFixウィンドウを開く
+" Open QuickFix windows upon make.
 autocmd QuickFixCmdPost make cwindow
 
-" ポップアップ補完の配色
+" Background color for completion prompt.
 hi Pmenu ctermbg=250
 hi PmenuSel ctermbg=150
 hi PmenuSbar ctermbg=150
 hi PmenuThumb ctermbg=0
 
-" Tab補完
+" Select completion by <Tab>.
 inoremap <expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

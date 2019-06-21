@@ -1,11 +1,11 @@
-" Vimのバージョンに応じたプラグイン管理
+" Switch Vim package manager according to Vim's version.
 if v:version < 704
   source ~/.vimrc.d/plugins/neobundle.vimrc
 else
   source ~/.vimrc.d/plugins/dein.vimrc
 endif
 
-" プラグイン固有の設定を読み込む
+" Load plugin specific scripts.
 if v:version < 704
   source ~/.vimrc.d/plugins/neocomplcache.vimrc
 else

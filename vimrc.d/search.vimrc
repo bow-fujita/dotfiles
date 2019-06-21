@@ -1,20 +1,20 @@
-" 最後まで検索したら先頭に戻る
+" Back to the top if a matched string reaches the bottom.
 set wrapscan
 
-" インクリメンタルサーチ
+" Enable incremental search.
 set incsearch
 
-" 大文字小文字無視
+" Enable case-insensitive search.
 set ignorecase
 
-" 検索文字に大文字が含まれている場合は大文字小文字区別
+" Enable case-sensitive search if keyword includes upper-case character.
 set smartcase
 
-" 検索文字をハイライト
+" Highlight matched string.
 set hlsearch
 
-" 検索文字の背景色
+" Background color of matched string.
 hi Search ctermbg=250
 
-" Esc連打でハイライト消去
+" Clear highlight upon <Esc><Esc>.
 nmap <Esc><Esc> :nohlsearch<CR><Esc>

@@ -1,16 +1,16 @@
-" デフォルトのエンコーディング
+" Set the default character encoding.
 set encoding=utf-8
 
-" 自動バックアップ禁止
+" Disable auto backup.
 set nobackup
 
-" 他で書き換えられたら自動反映
+" Enable auto reload.
 set autoread
 
-" *.swpファイル不要
+" Don't create *.swp.
 set noswapfile
 
-" 保存時に行末の空白を除去
+" Trim all trailing spaces upon saving.
 function! TrimTrailingSpaces()
     let cursor = getpos(".")
     %s/\s\+$//ge

@@ -1,27 +1,27 @@
-" neobundle.vimによるプラグイン管理
+" Use neobundle.vim for Vim package manager.
 
-" プラグインのインストール先
+" Where to install plugins managed by neobundle.vim.
 let s:neobundle_dir = expand('~/.vim/bundle/')
 
-" neobundle.vim本体のインストール先
+" Where to install neobundle.vim itself.
 let s:neobundle_self_dir = s:neobundle_dir . 'neobundle.vim'
 
 if &runtimepath !~# '/neobundle.vim'
-  " neobundle.vimがなければダウンロード
+  " Download neobundle.vim if it doesn't exist.
   if !isdirectory(s:neobundle_self_dir)
     execute '!git clone https://github.com/Shougo/neobundle.vim' s:neobundle_self_dir
   endif
-  " neobundle.vim本体をruntimepathに追加
+  " Add neobundle.vim to runtimepath.
   execute 'set runtimepath^=' . fnamemodify(s:neobundle_self_dir, ':p')
 endif
 
-" neobundle.vimの設定
+" Configuration for neobundle.vim.
 call neobundle#begin(s:neobundle_dir)
 
-" neobundle自身を管理
+" Manage neobundle itself.
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-" プラグインの登録
+" Register plugins.
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
@@ -38,7 +38,7 @@ NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'markwu/largefile'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 
-" シンタックスハイライト
+" Syntax highlight.
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'jelera/vim-javascript-syntax'
@@ -58,5 +58,5 @@ call neobundle#end()
 
 filetype plugin indent on
 
-" 未インストールのプラグインをインストール
+" Install all plugins not installed yet.
 NeoBundleCheck

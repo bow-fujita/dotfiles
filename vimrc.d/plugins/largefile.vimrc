@@ -1,2 +1,2 @@
-" LargeFileを起動するファイルサイズの閾値（MB単位：デフォルト20MB）
+" File size threashold to launch LargeFile in MB. (Default: 20MB)
 " let g:LargeFile=20

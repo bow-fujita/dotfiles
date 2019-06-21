@@ -1,15 +1,14 @@
-" タブ幅
+" Tab width.
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set expandtab
 
-" インデント
+" Indent
 set autoindent
-"set cindent
 set smartindent
 
-" ファイルタイプ別の設定
+" FileType specific configuration.
 autocmd FileType
     \ css,javascript,php,html,xml
     \ setlocal sw=2 sts=2 ts=2

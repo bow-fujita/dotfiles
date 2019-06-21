@@ -1,9 +1,9 @@
-" 構文ハイライト表示
+" Enable syntax highlight.
 syntax on
 
-" ファイルタイプ別の設定
+" FileType specific configuration.
 autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufRead *.make set filetype=make
 
-" 構文解析の検索範囲を制限
+" Limit the range to parse syntax to improve screen updating speed.
 autocmd FileType * syntax sync minlines=1000 maxlines=3000
