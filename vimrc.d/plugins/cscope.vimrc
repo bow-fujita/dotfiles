@@ -37,6 +37,10 @@ if has("cscope")
     " if you want the reverse search order.
     set csto=0
 
+    " not to print 'duplicate cscope database not added' message
+    " See :help cscope or http://vimdoc.sourceforge.net/htmldoc/if_cscop.html
+    set nocsverb
+
     " add any cscope database in current directory
     if filereadable("cscope.out")
         cs add cscope.out
@@ -46,7 +50,7 @@ if has("cscope")
     endif
 
     " show msg when any other cscope db added
-    set cscopeverbose
+    set csverb
 
 
     """"""""""""" My cscope/vim key mappings
