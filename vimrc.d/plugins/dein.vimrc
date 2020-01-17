@@ -12,7 +12,7 @@ if &runtimepath !~# '/dein.vim'
     execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
     " Use v1.5 for Vim <= 8.0.
     if v:version < 800
-      execute '!git -C ' s:dein_repo_dir 'checkout -b vim7-compat 1.5'
+      execute '!cd ' s:dein_repo_dir '; git checkout -b vim7-compat 1.5'
     endif
   endif
   " Add dein.vim to runtimepath.
