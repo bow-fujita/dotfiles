@@ -6,6 +6,9 @@ endif
 " Replace mapleader with ",".
 let mapleader=","
 
+" Bind jj to Esc
+inoremap <silent> jj <ESC>
+
 source ~/.vimrc.d/plugins.vimrc
 
 source ~/.vimrc.d/syntax.vimrc

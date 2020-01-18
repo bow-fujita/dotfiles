@@ -24,6 +24,7 @@ export PATH
 
 # Enable vim key bindings.
 set -o vi
+bind '"jj":vi-movement-mode'
 export EDITOR=vi
 export PAGER=less
 
