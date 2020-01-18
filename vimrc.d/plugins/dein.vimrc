@@ -27,7 +27,11 @@ if dein#load_state(s:dein_dir)
   " Manage dein.vim itself.
   call dein#add('Shougo/dein.vim')
 
-  call dein#add('Shougo/neocomplete.vim')
+  if has('lua')
+    call dein#add('Shougo/neocomplete.vim')
+  else
+    call dein#add('Shougo/neocomplcache.vim')
+  endif
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })

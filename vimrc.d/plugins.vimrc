@@ -6,10 +6,10 @@ else
 endif
 
 " Load plugin specific scripts.
-if v:version < 704
-  source ~/.vimrc.d/plugins/neocomplcache.vimrc
-else
+if v:version >= 704 && has('lua')
   source ~/.vimrc.d/plugins/neocomplete.vimrc
+else
+  source ~/.vimrc.d/plugins/neocomplcache.vimrc
 endif
 source ~/.vimrc.d/plugins/vim-indent-guides.vimrc
 source ~/.vimrc.d/plugins/largefile.vimrc
