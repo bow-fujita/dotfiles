@@ -25,7 +25,7 @@ if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
 
   " Manage dein.vim itself.
-  call dein#add('Shougo/dein.vim')
+  call dein#add(s:dein_repo_dir)
 
   if has('lua')
     call dein#add('Shougo/neocomplete.vim')
@@ -46,6 +46,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('hail2u/vim-css3-syntax')
   call dein#add('jelera/vim-javascript-syntax')
   call dein#add('briancollins/vim-jst')
+  call dein#add('posva/vim-vue')
   call dein#add('vim-jp/vim-cpp')
   call dein#add('vim-scripts/ifdef-highlighting')
   call dein#add('vim-scripts/AnsiEsc.vim')

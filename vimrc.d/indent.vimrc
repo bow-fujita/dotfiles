@@ -10,7 +10,7 @@ set smartindent
 
 " FileType specific configuration.
 autocmd FileType
-    \ css,javascript,php,html,xml
+    \ css,javascript,php,html,xml,vue
     \ setlocal sw=2 sts=2 ts=2
 
 autocmd FileType make setlocal noexpandtab
