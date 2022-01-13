@@ -1,7 +1,11 @@
-# Create a dotfile contains $SSH_AGENT_PID
+# Create a dotfile contains $SSH_AUTH_SOCK and $SSH_AGENT_PID
 dot_ssh_agent=~/.ssh-agent.$HOSTNAME
 if [ -f $dot_ssh_agent ]; then
 	. $dot_ssh_agent > /dev/null
+fi
+if [ -n "$SSH_AUTH_SOCK" -a ! -S $SSH_AUTH_SOCK ]; then
+    kill $SSH_AGENT_PID
+    unset SSH_AGENT_PID
 fi
 if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
 	ssh-agent > $dot_ssh_agent
