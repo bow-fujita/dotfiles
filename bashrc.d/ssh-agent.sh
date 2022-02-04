@@ -1,15 +1,16 @@
 # Create a dotfile contains $SSH_AUTH_SOCK and $SSH_AGENT_PID
 dot_ssh_agent=~/.ssh-agent.$HOSTNAME
 if [ -f $dot_ssh_agent ]; then
-	. $dot_ssh_agent > /dev/null
+    . $dot_ssh_agent > /dev/null
 fi
 if [ -n "$SSH_AUTH_SOCK" -a ! -S $SSH_AUTH_SOCK ]; then
+    echo "Killing old ssh-agent (pid=$SSH_AGENT_PID)"
     kill $SSH_AGENT_PID
     unset SSH_AGENT_PID
 fi
 if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
-	ssh-agent > $dot_ssh_agent
-	. $dot_ssh_agent > /dev/null
+    ssh-agent > $dot_ssh_agent
+    . $dot_ssh_agent > /dev/null
 fi
 unset -f dot_ssh_agent
 
@@ -20,19 +21,16 @@ unset -f zombie_ssh_agents
 
 load_ssh_keys()
 {
-	local loaded_keys=$(ssh-add -l | awk '{print $3}') loaded_key private_keys private_key found
+    local loaded_fps=$(ssh-add -l | awk '{print $2}') fp pkey pkeys2add
 
-	for private_key in $(ls ~/.ssh/id_* 2>/dev/null | grep -v '\.pub$'); do
-		if [ -f $private_key -a ! -L $private_key ]; then
-			found=0
-			for loaded_key in $loaded_keys; do
-				[ $loaded_key = $private_key ] && found=1
-			done
-			[ $found -eq 1 ] || private_keys="$private_keys $private_key"
-		fi
-	done
+    for pkey in $(ls ~/.ssh/id_* 2>/dev/null | grep -v '\.pub$'); do
+        if [ -f $pkey -a ! -L $pkey ]; then
+            fp=$(ssh-keygen -lf $pkey | awk '{print $2}')
+            echo $loaded_fps | grep -wq $fp || pkeys2add="$pkeys2add $pkey"
+        fi
+    done
 
-	[ -z "$private_keys" ] || ssh-add $private_keys
+    [ -z "$pkeys2add" ] || ssh-add $pkeys2add
 }
 
 load_ssh_keys
