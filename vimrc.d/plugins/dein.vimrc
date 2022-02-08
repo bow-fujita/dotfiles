@@ -53,7 +53,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('vim-scripts/ifdef-highlighting')
   call dein#add('vim-scripts/AnsiEsc.vim')
 
-  if executable('ctag')
+  if executable('ctags')
     call dein#add('vim-scripts/taglist.vim')
   endif
   if executable('cscope')
