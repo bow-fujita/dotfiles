@@ -3,7 +3,7 @@ dot_ssh_agent=~/.ssh-agent.$HOSTNAME
 if [ -f $dot_ssh_agent ]; then
     . $dot_ssh_agent > /dev/null
 fi
-if [ -n "$SSH_AUTH_SOCK" -a ! -S $SSH_AUTH_SOCK ]; then
+if [ -n "$SSH_AUTH_SOCK" -a ! -S "$SSH_AUTH_SOCK" ]; then
     echo "Killing old ssh-agent (pid=$SSH_AGENT_PID)"
     kill $SSH_AGENT_PID
     unset SSH_AGENT_PID
