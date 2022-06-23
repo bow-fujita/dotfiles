@@ -4,7 +4,7 @@ if ! shopt -oq posix; then
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
-  if which brew > /dev/null; then
+  if which brew >& /dev/null; then
     if [ -r $(brew --prefix)/etc/profile.d/bash_completion.sh ]; then
       . $(brew --prefix)/etc/profile.d/bash_completion.sh
     fi
