@@ -1,11 +1,15 @@
 if ! nvm ls >& /dev/null; then
-	for nvm_dir in ~/.nvm /usr/local/nvm; do
+    brew_nvm_dir=
+    if which brew >& /dev/null; then
+        brew_nvm_dir=$(brew --prefix nvm)
+    fi
+	for nvm_dir in ~/.nvm $brew_nvm_dir; do
 		if [ -f $nvm_dir/nvm.sh ]; then
 			. $nvm_dir/nvm.sh
 			break
 		fi
 	done
-	unset nvm_dir
+	unset nvm_dir brew_nvm_dir
 fi
 
 if nvm ls >& /dev/null; then
