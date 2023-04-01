@@ -34,11 +34,8 @@ if dein#load_state(s:dein_dir)
   endif
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
-  call dein#add('Shougo/vimproc.vim', { 'build' : 'make' })
   call dein#add('itchyny/lightline.vim')
-  call dein#add('nathanaelkane/vim-indent-guides')
   call dein#add('bronson/vim-trailing-whitespace')
-  call dein#add('markwu/largefile')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
 
   " Syntax highlight.
@@ -51,7 +48,6 @@ if dein#load_state(s:dein_dir)
   call dein#add('ekalinin/Dockerfile.vim')
   call dein#add('vim-jp/vim-cpp')
   call dein#add('vim-scripts/ifdef-highlighting')
-  call dein#add('vim-scripts/AnsiEsc.vim')
 
   if executable('ctags')
     call dein#add('vim-scripts/taglist.vim')

@@ -23,19 +23,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Register plugins.
 NeoBundle 'Shougo/neocomplcache.vim'
-NeoBundle 'Shougo/vimproc.vim', {
-\ 'build' : {
-\     'windows' : 'tools\\update-dll-mingw',
-\     'cygwin' : 'make -f make_cygwin.mak',
-\     'mac' : 'make',
-\     'linux' : 'make',
-\     'unix' : 'gmake'
-\    }
-\ }
 NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bronson/vim-trailing-whitespace'
-NeoBundle 'markwu/largefile'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 
 " Syntax highlight.
@@ -48,7 +37,6 @@ NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'vim-jp/vim-cpp'
 NeoBundle 'vim-scripts/ifdef-highlighting'
-NeoBundle 'vim-scripts/AnsiEsc.vim'
 
 if executable('ctags')
   NeoBundle 'vim-scripts/taglist.vim'
