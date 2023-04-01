@@ -1,3 +1,7 @@
+if [ -f /.dockerenv ]; then
+    return
+fi
+
 # Create a dotfile contains $SSH_AUTH_SOCK and $SSH_AGENT_PID
 dot_ssh_agent=~/.ssh-agent.$HOSTNAME
 if [ -f $dot_ssh_agent ]; then
@@ -5,7 +9,7 @@ if [ -f $dot_ssh_agent ]; then
 fi
 if [ -n "$SSH_AUTH_SOCK" -a ! -S "$SSH_AUTH_SOCK" ]; then
     echo "Killing old ssh-agent (pid=$SSH_AGENT_PID)"
-    kill $SSH_AGENT_PID
+    kill $SSH_AGENT_PID >& /dev/null
     unset SSH_AGENT_PID
 fi
 if [ -z "$SSH_AGENT_PID" ] || ! kill -0 $SSH_AGENT_PID >& /dev/null; then
@@ -25,8 +29,12 @@ load_ssh_keys()
 
     for pkey in $(ls ~/.ssh/id_* 2>/dev/null | grep -v '\.pub$'); do
         if [ -f $pkey -a ! -L $pkey ]; then
-            fp=$(ssh-keygen -lf $pkey | awk '{print $2}')
-            echo $loaded_fps | grep -wq $fp || pkeys2add="$pkeys2add $pkey"
+            if [ ! -f $pkey.pub ]; then
+                echo "Found $pkey but not found its public key"
+            else
+                fp=$(ssh-keygen -lf $pkey | awk '{print $2}')
+                echo $loaded_fps | grep -wq $fp || pkeys2add="$pkeys2add $pkey"
+            fi
         fi
     done
 
