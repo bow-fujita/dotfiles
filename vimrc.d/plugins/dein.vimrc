@@ -37,6 +37,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('itchyny/lightline.vim')
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
+  call dein#add('tpope/vim-fugitive')
 
   " Syntax highlight.
   call dein#add('othree/html5.vim')
@@ -48,6 +49,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('ekalinin/Dockerfile.vim')
   call dein#add('vim-jp/vim-cpp')
   call dein#add('vim-scripts/ifdef-highlighting')
+  call dein#add('powerman/vim-plugin-AnsiEsc')
 
   if executable('ctags')
     call dein#add('vim-scripts/taglist.vim')

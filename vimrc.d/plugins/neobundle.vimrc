@@ -26,6 +26,7 @@ NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
+NeoBundle 'tpope/vim-fugitive'
 
 " Syntax highlight.
 NeoBundle 'othree/html5.vim'
@@ -37,6 +38,7 @@ NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'vim-jp/vim-cpp'
 NeoBundle 'vim-scripts/ifdef-highlighting'
+NeoBundle 'powerman/vim-plugin-AnsiEsc'
 
 if executable('ctags')
   NeoBundle 'vim-scripts/taglist.vim'
