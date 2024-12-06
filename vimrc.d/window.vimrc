@@ -46,6 +46,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
+" Shortcut keys to toggle NERDTree.
+nnoremap <C-t> :NERDTreeToggle<CR>
+
 " Highlight the cursor line only in active window.
 set cursorline
 augroup cch

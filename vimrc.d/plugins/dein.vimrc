@@ -27,10 +27,19 @@ if dein#load_state(s:dein_dir)
   " Manage dein.vim itself.
   call dein#add(s:dein_repo_dir)
 
-  if has('lua')
-    call dein#add('Shougo/neocomplete.vim')
+  " Use deoplete for Vim >= 8.2
+  if v:version >= 802
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
   else
-    call dein#add('Shougo/neocomplcache.vim')
+    if has('lua')
+      call dein#add('Shougo/neocomplete.vim')
+    else
+      call dein#add('Shougo/neocomplcache.vim')
+    endif
   endif
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
@@ -38,6 +47,7 @@ if dein#load_state(s:dein_dir)
   call dein#add('bronson/vim-trailing-whitespace')
   call dein#add('tmux-plugins/vim-tmux-focus-events')
   call dein#add('tpope/vim-fugitive')
+  call dein#add('preservim/nerdtree')
 
   " Syntax highlight.
   call dein#add('othree/html5.vim')

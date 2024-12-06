@@ -27,6 +27,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'bronson/vim-trailing-whitespace'
 NeoBundle 'tmux-plugins/vim-tmux-focus-events'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'preservim/nerdtree'
 
 " Syntax highlight.
 NeoBundle 'othree/html5.vim'
